@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20201022131929_CoursesSystem.cs" />
+    <Compile Remove="Migrations\20201022131929_CoursesSystem.Designer.cs" />
+    <Compile Remove="Migrations\20201022132132_CoursesSystem.cs" />
+    <Compile Remove="Migrations\20201022132132_CoursesSystem.Designer.cs" />
+    <Compile Remove="Migrations\20201022140616_CoursesSystem.cs" />
+    <Compile Remove="Migrations\20201022140616_CoursesSystem.Designer.cs" />
+    <Compile Remove="Migrations\20201022140649_CoursesSystem.cs" />
+    <Compile Remove="Migrations\20201022140649_CoursesSystem.Designer.cs" />
+    <Compile Remove="Migrations\20201022141059_CoursesSystem.cs" />
+    <Compile Remove="Migrations\20201022141059_CoursesSystem.Designer.cs" />
+    <Compile Remove="Migrations\20201022141154_CoursesSystem.cs" />
+    <Compile Remove="Migrations\20201022141154_CoursesSystem.Designer.cs" />
+    <Compile Remove="Migrations\20201025190019_Blog.cs" />
+    <Compile Remove="Migrations\20201025190019_Blog.Designer.cs" />
+    <Compile Remove="Migrations\20201026124844_FixMinLenght.cs" />
+    <Compile Remove="Migrations\20201026124844_FixMinLenght.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\courses-admin\Data\" />
+    <Folder Include="Areas\courses-admin\Models\" />
+  </ItemGroup>
+
+</Project>

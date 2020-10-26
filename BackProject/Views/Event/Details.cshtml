@@ -1,0 +1,110 @@
+﻿@model EventVM
+@{
+    ViewData["Title"] = "Details";
+    List<string> autors = new List<string>();
+}
+
+<!-- Banner Area Start -->
+@await Component.InvokeAsync("SiteTitle", "event details")
+
+<!-- Banner Area End -->
+<!-- Event Details Start -->
+<div class="event-details-area blog-area pt-150 pb-140">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="event-details">
+                    <div class="event-details-img">
+                        <img src="~/site/img/event/@Model.Event.Image" alt="event-details">
+                        <div class="event-date">
+                            <h3>@Model.Event.StartTime.ToString("dd") <span>@Model.Event.StartTime.ToString("MMMM")</span></h3>
+                        </div>
+                    </div>
+                    <div class="event-details-content">
+                        <h2>@Model.Event.Title</h2>
+                        <ul>
+                            <li><span>time : </span> @Model.Event.StartTime.ToString("h.mm tt") - @Model.Event.EndTime.ToString("h.mm tt")</li>
+                            <li><span>venue : </span>@Model.Event.Venue</li>
+                        </ul>
+                        @Html.Raw(Model.Event.Description);
+                    </div>
+                    @await Component.InvokeAsync("LeaveReply");
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="blog-sidebar right">
+                    <div class="single-blog-widget mb-50">
+                        <h3>search</h3>
+                        <div class="blog-search">
+                            <form id="search" action="#">
+                                <input type="search" placeholder="Search..." name="search" />
+                                <button type="submit">
+                                    <span><i class="fa fa-search"></i></span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="single-blog-widget mb-50">
+                        <h3>categories</h3>
+                        <ul>
+                            @foreach (EventCategory item in Model.Event.EventCategories)
+                            {
+                                <li><a href="#">@item.Category.Name (@item.Category.EventCategories.Count())</a></li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="single-blog-widget mb-50">
+                        <div class="single-blog-banner">
+                            <a href="blog-details.html" id="blog"><img src="~/site/img/blog/blog-img.jpg" alt="blog"></a>
+                            <h2>best<br> eductaion<br> theme</h2>
+                        </div>
+                    </div>
+                    <div class="single-blog-widget mb-50">
+                        <h3>latest post</h3>
+                        @foreach (Event item in Model.LastestEvent)
+                        {
+                            <div class="single-post mb-30">
+                                <div class="single-post-img">
+                                    <a href="blog-details.html">
+                                        <img src="~/site/img/post/post1.jpg" alt="post">
+                                        <div class="blog-hover">
+                                            <i class="fa fa-link"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="single-post-content">
+                                    <h4><a href="blog-details.html">@item.Title</a></h4>
+                                    <p>
+                                        By
+                                        @{
+                                            foreach (EventModerator moderator in item.EventModerators)
+                                            {
+                                                autors.Add(moderator.Moderator.Name);
+                                            }
+                                            <span class="text-capitalize">@string.Join(", ", autors) </span>
+                                            autors.Clear();
+                                        }
+
+                                        /  @item.Created_at.ToString("MMMM dd, yyyy")
+                                    </p>
+
+                                </div>
+
+                            </div>
+                        }
+                    </div>
+                    <div class="single-blog-widget">
+                        <h3>tags</h3>
+                        <div class="single-tag">
+                            @foreach (Tag item in Model.Tags)
+                            {
+                                <a role="button" class="text-capitalize mr-10 mb-10">@item.Name</a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Event Details End -->

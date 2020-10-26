@@ -1,0 +1,103 @@
+﻿@model SiteInfo
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="card">
+    <div class="card-header header-elements-inline">
+        <h6 class="card-title">Site Info</h6>
+        <div class="header-elements">
+            <div class="list-icons">
+                <a class="list-icons-item" data-action="collapse"></a>
+                <a class="list-icons-item" data-action="reload"></a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div asp-validation-summary="ModelOnly" class="text-danger text-capitalize"></div>
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label asp-for="Title"></label>
+                <input asp-for="Title" class="form-control mb-3" placeholder="Enter title">
+                <span class="text-warning" asp-validation-for="Title"></span>
+            </div>
+            <div class="form-group col-6 pl-0">
+                <label asp-for="PhoneNumber1">Phone Number 1 *</label>
+                <input asp-for="PhoneNumber1" class="form-control mb-3">
+                <span class="text-warning" asp-validation-for="PhoneNumber1"></span>
+            </div>
+            <div class="form-group col-6 pl-0">
+                <label asp-for="PhoneNumber2">Phone Number 2 </label>
+                <input asp-for="PhoneNumber2" class="form-control mb-3">
+                <span class="text-warning" asp-validation-for="PhoneNumber2"></span>
+            </div>
+            <div class="form-group">
+                <label>Logo</label>
+                <img src="~/Site/img/logo/@Model.Logo" width="500" alt="Alternate Text" />
+            </div>
+            <div class="form-group row">
+                <label asp-for="Photo" class="col-lg-2 col-form-label font-weight-semibold"></label>
+                <div class="col-lg-10">
+                    <input asp-for="Photo" accept="image/*" class="file-input-slider-main" data-fouc>
+                </div>
+                <span class="text-warning" asp-validation-for="Photo"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ShortDescription">Short Description </label>
+                <input asp-for="ShortDescription" class="form-control mb-3">
+                <span class="text-warning" asp-validation-for="ShortDescription"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Facebook">Facebook </label>
+                <input asp-for="Facebook" class="form-control mb-3">
+                <span class="text-warning" asp-validation-for="Facebook"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pinterest">Pinterest</label>
+                <input asp-for="Pinterest" class="form-control mb-3">
+                <span class="text-warning" asp-validation-for="Pinterest"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Twitter">Twitter</label>
+                <input asp-for="Twitter" class="form-control mb-3">
+                <span class="text-warning" asp-validation-for="Twitter"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address">Address</label>
+                <input asp-for="Address" class="form-control mb-3">
+                <span class="text-warning" asp-validation-for="Address"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email">Email</label>
+                <input asp-for="Email" class="form-control mb-3">
+                <span class="text-warning" asp-validation-for="Email"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="LocationLatitude">Location Latitude</label>
+                <input asp-for="LocationLatitude" class="form-control mb-3">
+                <span class="text-warning" asp-validation-for="LocationLatitude"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LocationLongitude">Location Longitude </label>
+                <input asp-for="LocationLongitude" class="form-control mb-3">
+                <span class="text-warning" asp-validation-for="LocationLongitude"></span>
+            </div>
+            
+            <div class="d-flex justify-content-end align-items-center">
+                <button type="submit" class="btn bg-blue ml-3 legitRipple">Submit <i class="icon-paperplane ml-2"></i></button>
+            </div>
+        </form>
+    </div>
+</div>
+@section ThemeScript{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Admin/global_assets/js/plugins/editors/ckeditor/ckeditor.js"></script>
+    <script src="~/Admin/global_assets/js/plugins/extensions/jquery_ui/interactions.min.js"></script>
+    <script src="~/Admin/global_assets/js/plugins/forms/selects/select2.min.js"></script>
+    <script src="~/Admin/global_assets/js/plugins/uploaders/fileinput/plugins/purify.min.js"></script>
+    <script src="~/Admin/global_assets/js/plugins/uploaders/fileinput/plugins/sortable.min.js"></script>
+    <script src="~/Admin/global_assets/js/plugins/uploaders/fileinput/fileinput.min.js"></script>
+}
+

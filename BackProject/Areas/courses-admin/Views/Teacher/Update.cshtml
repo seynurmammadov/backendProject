@@ -1,0 +1,131 @@
+﻿@model TeacherVM
+@{
+    ViewData["Title"] = "Update";
+}
+
+<div class="card">
+    <div class="card-header header-elements-inline">
+        <h6 class="card-title">Create Teacher</h6>
+        <div class="header-elements">
+            <div class="list-icons">
+                <a class="list-icons-item" data-action="collapse"></a>
+                <a class="list-icons-item" data-action="reload"></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="form-group">
+                <label asp-for="Teacher.Name"></label>
+                <input asp-for="Teacher.Name" class="form-control mb-3" placeholder="Enter Name">
+                <span class="text-warning" asp-validation-for="Teacher.Name"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Teacher.Surname"></label>
+                <input asp-for="Teacher.Surname" class="form-control mb-3" placeholder="Enter Surname">
+                <span class="text-warning" asp-validation-for="Teacher.Surname"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Teacher.Position"></label>
+                <input asp-for="Teacher.Position" class="form-control mb-3" placeholder="Enter Position">
+                <span class="text-warning" asp-validation-for="Teacher.Position"></span>
+            </div>
+            <div class="form-group">
+                <label>Image</label>
+                <img src="~/Site/img/teacher/@Model.Teacher.Image" width="200" alt="Alternate Text" />
+            </div>
+            <div class="form-group row">
+                <label asp-for="Teacher.Photo" class="col-lg-2 col-form-label font-weight-semibold"></label>
+                <div class="col-lg-10">
+                    <input asp-for="Teacher.Photo" accept="image/*" class="file-input-slider-main" data-fouc>
+                </div>
+                <span class="text-warning" asp-validation-for="Teacher.Photo"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Teacher.Email"></label>
+                <input asp-for="Teacher.Email" class="form-control mb-3" placeholder="Enter Email">
+                <span class="text-warning" asp-validation-for="Teacher.Email"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Teacher.PhoneNumber"> Phone Number</label>
+                <input asp-for="Teacher.PhoneNumber" class="form-control mb-3" placeholder="Enter Phone Number">
+                <span class="text-warning" asp-validation-for="Teacher.PhoneNumber"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Teacher.Skype"></label>
+                <input asp-for="Teacher.Skype" class="form-control mb-3" placeholder="Enter Skype">
+                <span class="text-warning" asp-validation-for="Teacher.Skype"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Teacher.Facebook"></label>
+                <input asp-for="Teacher.Facebook" class="form-control mb-3" placeholder="Enter Facebook">
+                <span class="text-warning" asp-validation-for="Teacher.Facebook"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Teacher.Pinterest"></label>
+                <input asp-for="Teacher.Pinterest" class="form-control mb-3" placeholder="Enter Facebook">
+                <span class="text-warning" asp-validation-for="Teacher.Pinterest"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Teacher.Twitter"></label>
+                <input asp-for="Teacher.Twitter" class="form-control mb-3" placeholder="Enter Twitter">
+                <span class="text-warning" asp-validation-for="Teacher.Twitter"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="form-group">
+                    <label asp-for="TeacherDescription.Description"></label>
+                    <textarea asp-for="TeacherDescription.Description" id="Description" class="form-control description" rows="4" cols="4"></textarea>
+                    <span class="text-warning" asp-validation-for="TeacherDescription.Description"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="TeacherDescription.LanguageLevel"> Language Level</label>
+                <input asp-for="TeacherDescription.LanguageLevel" class="form-control mb-3" placeholder="Enter Language Level">
+                <span class="text-warning" asp-validation-for="TeacherDescription.LanguageLevel"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TeacherDescription.TeamLeaderLevel">Team Leader Level</label>
+                <input asp-for="TeacherDescription.TeamLeaderLevel" class="form-control mb-3" placeholder="Enter Team Leader Level">
+                <span class="text-warning" asp-validation-for="TeacherDescription.TeamLeaderLevel"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TeacherDescription.DevelopmentLevel"> Development Level</label>
+                <input asp-for="TeacherDescription.DevelopmentLevel" class="form-control mb-3" placeholder="Enter Development Level">
+                <span class="text-warning" asp-validation-for="TeacherDescription.DevelopmentLevel"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TeacherDescription.DesingLevel"> Desing Level</label>
+                <input asp-for="TeacherDescription.DesingLevel" class="form-control mb-3" placeholder="Enter Desing Level">
+                <span class="text-warning" asp-validation-for="TeacherDescription.DesingLevel"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TeacherDescription.CommunicationLevel">Communication Level</label>
+                <input asp-for="TeacherDescription.CommunicationLevel" class="form-control mb-3" placeholder="Enter Communication Level">
+                <span class="text-warning" asp-validation-for="TeacherDescription.CommunicationLevel"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TeacherDescription.InnovationLevel"> Innovation Level</label>
+                <input asp-for="TeacherDescription.InnovationLevel" class="form-control mb-3" placeholder="Enter Innovation Level">
+                <span class="text-warning" asp-validation-for="TeacherDescription.InnovationLevel"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Teacher.Activeted">Active teacher after create?</label>
+                <input asp-for="Teacher.Activeted" checked>
+                <span class="text-warning" asp-validation-for="Teacher.Activeted"></span>
+            </div>
+            <div class="d-flex justify-content-end align-items-center">
+                <button type="submit" class="btn bg-blue ml-3 legitRipple">Submit <i class="icon-paperplane ml-2"></i></button>
+            </div>
+        </form>
+    </div>
+</div>
+@section ThemeScript{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Admin/global_assets/js/plugins/editors/ckeditor/ckeditor.js"></script>
+    <script src="~/Admin/global_assets/js/plugins/uploaders/fileinput/fileinput.min.js"></script>
+}
+

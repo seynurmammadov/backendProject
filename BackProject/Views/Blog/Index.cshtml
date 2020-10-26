@@ -1,0 +1,75 @@
+﻿@model List<Blog>
+@{
+    ViewData["Title"] = "Index";
+    List<string> autors = new List<string>();
+
+}
+
+<!-- Banner Area Start -->
+@await Component.InvokeAsync("SiteTitle", "blog")
+
+<!-- Banner Area End -->
+<!-- Blog Start -->
+<div class="blog-area pt-150 pb-150">
+    <div class="container">
+        <div class="row">
+            @foreach (Blog item in Model)
+            {
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="single-blog mb-60">
+                        <div class="blog-img">
+                            <a asp-controller="blog" asp-action="details" asp-route-id="@item.Id">
+                                <img src="~/site/img/blog/@item.Image" alt="blog">
+                            </a>
+                            <div class="blog-hover">
+                                <i class="fa fa-link"></i>
+                            </div>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-top">
+                                <p>
+                                    By
+                                    @{
+                                        foreach (BlogModerator moderator in item.BlogModerators)
+                                        {
+                                            autors.Add(moderator.Moderator.Name);
+                                        }
+                                        <span class="text-capitalize">@string.Join(", ", autors) </span>
+                                        autors.Clear();
+                                    }
+
+                                    /  @item.Created_at.ToString("MMMM dd, yyyy")
+                                </p>
+                            </div>
+                            <div class="blog-bottom">
+                                <h2>
+                                    <a asp-controller="blog" asp-action="details" asp-route-id="@item.Id">
+                                        @item.Name
+                                    </a>
+                                </h2>
+                                <a asp-controller="blog" asp-action="details" asp-route-id="@item.Id">read more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="pagination">
+                    <ul>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Blog End -->
+<!-- Subscribe Start -->
+@await Component.InvokeAsync("Subscribe");
+<!-- Subscribe End -->

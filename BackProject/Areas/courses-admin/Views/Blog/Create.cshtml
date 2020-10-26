@@ -1,0 +1,80 @@
+﻿@model Blog
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="card">
+    <div class="card-header header-elements-inline">
+        <h6 class="card-title">Create Course</h6>
+        <div class="header-elements">
+            <div class="list-icons">
+                <a class="list-icons-item" data-action="collapse"></a>
+                <a class="list-icons-item" data-action="reload"></a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div asp-validation-summary="ModelOnly" class="text-danger text-capitalize"></div>
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control mb-3" placeholder="Enter Name">
+                <span class="text-warning" asp-validation-for="Name"></span>
+            </div>
+            
+            <div class="form-group">
+                <div class="form-group">
+                    <label asp-for="Description"></label>
+                    <textarea asp-for="Description" class="form-control description" rows="4" cols="4"></textarea>
+                    <span class="text-warning" asp-validation-for="Description"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Photo" class="col-lg-2 col-form-label font-weight-semibold"></label>
+                <div class="col-lg-10">
+                    <input asp-for="Photo" accept="image/*" class="file-input-slider-main" data-fouc>
+                </div>
+                <span class="text-warning" asp-validation-for="Photo"></span>
+
+            </div>
+
+            <div class="form-group">
+                <label>Categories</label>
+                <select multiple="multiple" class="form-control select" name="Categories" data-placeholder="Select Categories..." data-fouc>
+                    @foreach (var ctg in ViewBag.Categories)
+                    {
+                        <option class="text-capitalize" value="@ctg.Id">@ctg.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Moderators</label>
+                <select multiple="multiple" class="form-control select" name="Moderators" data-placeholder="Select Moderators..." data-fouc>
+                    @foreach (var moderator in ViewBag.Moderators)
+                    {
+
+                        <option class="text-capitalize" value="@moderator.Id">@moderator.Username</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Activeted">Active course after create?</label>
+                <input asp-for="Activeted" checked>
+                <span class="text-warning" asp-validation-for="Activeted"></span>
+            </div>
+            <div class="d-flex justify-content-end align-items-center">
+                <button type="submit" class="btn bg-blue ml-3 legitRipple">Submit <i class="icon-paperplane ml-2"></i></button>
+            </div>
+        </form>
+    </div>
+</div>
+@section ThemeScript{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Admin/global_assets/js/plugins/editors/ckeditor/ckeditor.js"></script>
+    <script src="~/Admin/global_assets/js/plugins/extensions/jquery_ui/interactions.min.js"></script>
+    <script src="~/Admin/global_assets/js/plugins/forms/selects/select2.min.js"></script>
+    <script src="~/Admin/global_assets/js/plugins/uploaders/fileinput/plugins/purify.min.js"></script>
+    <script src="~/Admin/global_assets/js/plugins/uploaders/fileinput/plugins/sortable.min.js"></script>
+    <script src="~/Admin/global_assets/js/plugins/uploaders/fileinput/fileinput.min.js"></script>
+}

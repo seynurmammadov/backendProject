@@ -1,0 +1,118 @@
+﻿@model BlogVM
+@{
+    ViewData["Title"] = "Details";
+    List<string> autors = new List<string>();
+}
+
+<!-- Banner Area Start -->
+@await Component.InvokeAsync("SiteTitle", "blog details")
+
+<!-- Banner Area End -->
+<!-- Blog Start -->
+<div class="courses-details-area blog-area pt-150 pb-140">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="courses-details">
+                    <div class="courses-details-img">
+                        <img src="~/site/img/blog/@Model.Blog.Image" alt="courses-details">
+                    </div>
+                    <div class="course-details-content">
+                        <h2>@Model.Blog.Name</h2>
+                        <h6>
+                            By
+                            @{
+                                foreach (BlogModerator moderator in Model.Blog.BlogModerators)
+                                {
+                                    autors.Add(moderator.Moderator.Name);
+                                }
+                                <span class="text-capitalize">@string.Join(", ", autors) </span>
+                                autors.Clear();
+                            }
+                        </h6>
+                        @Html.Raw(Model.Blog.Description)
+                    </div>
+                    @await Component.InvokeAsync("LeaveReply");
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="blog-sidebar right">
+                    <div class="single-blog-widget mb-50">
+                        <h3>search</h3>
+                        <div class="blog-search">
+                            <form id="search" action="#">
+                                <input type="search" placeholder="Search..." name="search" />
+                                <button type="submit">
+                                    <span><i class="fa fa-search"></i></span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="single-blog-widget mb-50">
+                        <h3>categories</h3>
+                        <ul>
+                            @foreach (BlogCategory item in Model.Blog.BlogCategories)
+                            {
+                                <li><a href="#">@item.Category.Name (@item.Category.BlogCategories.Count())</a></li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="single-blog-widget mb-50">
+                        <div class="single-blog-banner">
+                            <a href="blog-details.html" id="blog"><img src="~/site/img/blog/blog-img.jpg" alt="blog"></a>
+                            <h2>best<br> eductaion<br> theme</h2>
+                        </div>
+                    </div>
+                    <div class="single-blog-widget mb-50">
+                        <h3>latest post</h3>
+                        @foreach (Blog item in Model.LastestBlog)
+                        {
+                            <div class="single-post mb-30">
+                                <div class="single-post-img">
+                                    <a href="blog-details.html">
+                                        <img src="~/site/img/post/post1.jpg" alt="post">
+                                        <div class="blog-hover">
+                                            <i class="fa fa-link"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="single-post-content">
+                                    <h4><a href="blog-details.html">@item.Name</a></h4>
+                                    <p>
+                                        By
+                                        @{
+                                            foreach (BlogModerator moderator in item.BlogModerators)
+                                            {
+                                                autors.Add(moderator.Moderator.Name);
+                                            }
+                                            <span class="text-capitalize">@string.Join(", ", autors) </span>
+                                            autors.Clear();
+                                        }
+
+                                        /  @item.Created_at.ToString("MMMM dd, yyyy")
+                                    </p>
+
+                                </div>
+
+                            </div>
+                        }
+                    </div>
+                    <div class="single-blog-widget">
+                        <h3>tags</h3>
+                        <div class="single-tag">
+                            @foreach (Tag item in Model.Tags)
+                            {
+                                <a role="button" class="text-capitalize mb-10 mr-10">@item.Name</a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Blog End -->
+<!-- Subscribe Start -->
+@await Component.InvokeAsync("Subscribe");
+<!-- Subscribe End -->
