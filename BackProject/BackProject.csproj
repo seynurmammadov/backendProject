@@ -21,6 +21,8 @@
     <Compile Remove="Migrations\20201025190019_Blog.Designer.cs" />
     <Compile Remove="Migrations\20201026124844_FixMinLenght.cs" />
     <Compile Remove="Migrations\20201026124844_FixMinLenght.Designer.cs" />
+    <Compile Remove="Migrations\20201027105549_Sliders.cs" />
+    <Compile Remove="Migrations\20201027105549_Sliders.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

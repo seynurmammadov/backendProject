@@ -24,6 +24,7 @@ namespace BackProject.Areas.courses_admin.ViewComponents
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
+            ViewBag.MainSliderCount = _db.Sliders.Count();
             AppUser user = await _userManager.GetUserAsync((System.Security.Claims.ClaimsPrincipal)User);
 
             UserVM userVM = new UserVM()

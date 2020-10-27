@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Sliders>
+@{
+    ViewData["Title"] = "Slider";
+}
+<!-- State saving -->
+<div class="card">
+    <div class="card-header header-elements-inline">
+        <h5 class="card-title">Slider items</h5>
+        <div class="header-elements">
+            <div class="list-icons">
+                <a class="list-icons-item" data-action="collapse"></a>
+                <a class="list-icons-item" data-action="reload"></a>
+            </div>
+        </div>
+    </div>
+    <table class="table category-datatable">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Image</th>
+                <th class="text-center">status</th>
+                <th class="text-center">Change status</th>
+                <th class="text-right">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Sliders item in Model)
+            {
+            <tr>
+                <td>
+                    @item.Title
+                </td>
+                <td>
+                    <img src="~/site/img/slider/@item.Image" alt="Alternate Text" width="150" />
+                </td>
+                @if (item.Activeted)
+                {
+                    <td class=" text-capitalize text-success status-text">Active</td>
+                }
+                else
+                {
+                    <td class="text-capitalize text-danger status-text">Disable</td>
+                }
+                <td class="text-center ">
+                    @if (!item.Activeted)
+                    {
+                        <a class="text-capitalize text-white btn btn-success status " data-id="@item.Id">Active</a>
+                    }
+                    else
+                    {
+                        <a class="text-capitalize text-white btn btn-danger status" data-id="@item.Id">Disable</a>
+                    }
+                </td>
+                <td class="text-right">
+                    <div class="list-icons">
+                        <a asp-action="update" asp-route-id="@item.Id" class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
+                        <a class="list-icons-item text-danger-600 delete" data-id="@item.Id"><i class="icon-trash"></i></a>
+                    </div>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section ThemeScript{
+    <script src="~/Admin/global_assets/js/plugins/tables/datatables/datatables.min.js"></script>
+    <script src="~/Admin/global_assets/js/plugins/notifications/sweet_alert.min.js"></script>
+}
+<!-- /state saving -->

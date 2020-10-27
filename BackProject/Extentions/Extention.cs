@@ -50,7 +50,7 @@ namespace BackProject.Extentions
                 return false;
             }
 
-            if (Photo.MaxLength(300))
+            if (Photo.MaxLength(3000))
             {
                 modelState.AddModelError("Photo", "Image length must be max 300kb!!!");
                 return false;

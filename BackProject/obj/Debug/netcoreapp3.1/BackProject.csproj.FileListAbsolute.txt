@@ -160,8 +160,6 @@ C:\Users\agase\OneDrive\Рабочий стол\p314-asp-mvc-project-seynurmamma
 C:\Users\agase\OneDrive\Рабочий стол\p314-asp-mvc-project-seynurmammadov\BackProject\obj\Debug\netcoreapp3.1\Razor\Areas\courses-admin\Views\Users\ResetPassword.cshtml.g.cs
 C:\Users\agase\OneDrive\Рабочий стол\p314-asp-mvc-project-seynurmammadov\BackProject\obj\Debug\netcoreapp3.1\Razor\Views\Course\Index.cshtml.g.cs
 C:\Users\agase\OneDrive\Рабочий стол\p314-asp-mvc-project-seynurmammadov\BackProject\obj\Debug\netcoreapp3.1\Razor\Views\Course\Details.cshtml.g.cs
-C:\Users\agase\OneDrive\Рабочий стол\p314-asp-mvc-project-seynurmammadov\BackProject\obj\Debug\netcoreapp3.1\BackProject.csproj.CoreCompileInputs.cache
-C:\Users\agase\OneDrive\Рабочий стол\p314-asp-mvc-project-seynurmammadov\BackProject\obj\Debug\netcoreapp3.1\BackProject.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\agase\OneDrive\Рабочий стол\p314-asp-mvc-project-seynurmammadov\BackProject\obj\Debug\netcoreapp3.1\Razor\Areas\courses-admin\Views\Category\Index.cshtml.g.cs
 C:\Users\agase\OneDrive\Рабочий стол\p314-asp-mvc-project-seynurmammadov\BackProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Subscribe\Default.cshtml.g.cs
 C:\Users\agase\OneDrive\Рабочий стол\p314-asp-mvc-project-seynurmammadov\BackProject\obj\Debug\netcoreapp3.1\Razor\Areas\courses-admin\Views\Category\Update.cshtml.g.cs
@@ -190,3 +188,11 @@ C:\Users\agase\OneDrive\Рабочий стол\p314-asp-mvc-project-seynurmamma
 C:\Users\agase\OneDrive\Рабочий стол\p314-asp-mvc-project-seynurmammadov\BackProject\obj\Debug\netcoreapp3.1\Razor\Views\Blog\Details.cshtml.g.cs
 C:\Users\agase\OneDrive\Рабочий стол\p314-asp-mvc-project-seynurmammadov\BackProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\SiteTitle\Default.cshtml.g.cs
 C:\Users\agase\OneDrive\Рабочий стол\p314-asp-mvc-project-seynurmammadov\BackProject\obj\Debug\netcoreapp3.1\Razor\Areas\courses-admin\Views\Site\Index.cshtml.g.cs
+C:\Users\agase\OneDrive\Рабочий стол\p314-asp-mvc-project-seynurmammadov\BackProject\obj\Debug\netcoreapp3.1\BackProject.csproj.CoreCompileInputs.cache
+C:\Users\agase\OneDrive\Рабочий стол\p314-asp-mvc-project-seynurmammadov\BackProject\obj\Debug\netcoreapp3.1\BackProject.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\agase\OneDrive\Рабочий стол\p314-asp-mvc-project-seynurmammadov\BackProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Footer\Default.cshtml.g.cs
+C:\Users\agase\OneDrive\Рабочий стол\p314-asp-mvc-project-seynurmammadov\BackProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Header\Default.cshtml.g.cs
+C:\Users\agase\OneDrive\Рабочий стол\p314-asp-mvc-project-seynurmammadov\BackProject\obj\Debug\netcoreapp3.1\Razor\Views\Contact\Index.cshtml.g.cs
+C:\Users\agase\OneDrive\Рабочий стол\p314-asp-mvc-project-seynurmammadov\BackProject\obj\Debug\netcoreapp3.1\Razor\Areas\courses-admin\Views\Slider\Index.cshtml.g.cs
+C:\Users\agase\OneDrive\Рабочий стол\p314-asp-mvc-project-seynurmammadov\BackProject\obj\Debug\netcoreapp3.1\Razor\Areas\courses-admin\Views\Slider\Create.cshtml.g.cs
+C:\Users\agase\OneDrive\Рабочий стол\p314-asp-mvc-project-seynurmammadov\BackProject\obj\Debug\netcoreapp3.1\Razor\Areas\courses-admin\Views\Slider\Update.cshtml.g.cs
