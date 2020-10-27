@@ -23,6 +23,10 @@
     <Compile Remove="Migrations\20201026124844_FixMinLenght.Designer.cs" />
     <Compile Remove="Migrations\20201027105549_Sliders.cs" />
     <Compile Remove="Migrations\20201027105549_Sliders.Designer.cs" />
+    <Compile Remove="Migrations\20201027180201_HomeSectionsModels.cs" />
+    <Compile Remove="Migrations\20201027180201_HomeSectionsModels.Designer.cs" />
+    <Compile Remove="Migrations\20201027193304_HomeSectionsModelsFix2.cs" />
+    <Compile Remove="Migrations\20201027193304_HomeSectionsModelsFix2.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

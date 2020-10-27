@@ -110,9 +110,7 @@
                             </span>
                         </a>
                     </li>
-                    <li class="nav-item ">
-                        <a asp-controller="site" asp-action="index" class="nav-link"><i class="fas fa-database"></i> <span>Site Settings</span></a>
-                    </li>
+
                     <li class="nav-item nav-item-submenu">
                         <a href="#" class="nav-link"><i class="fas fa-layer-group"></i> <span>Category</span></a>
 
@@ -185,7 +183,7 @@
                         </ul>
                     </li>
                     <li class="nav-item nav-item-submenu">
-                        <a href="#" class="nav-link"><i class="icon-images2"></i> <span>Slider</span></a>
+                        <a href="#" class="nav-link"><i class="icon-images2"></i> <span>Home Page Slider</span></a>
 
                         <ul class="nav nav-group-sub">
                             <li class="nav-item">
@@ -198,6 +196,37 @@
                                 </li>
                             }
                         </ul>
+                    </li>
+
+                    <li class="nav-item nav-item-submenu">
+                        <a href="#" class="nav-link"><i class="fas fa-exclamation-triangle "></i> <span>Home Page Notices</span></a>
+                        <ul class="nav nav-group-sub">
+                            <li class="nav-item">
+                                <a asp-controller="Notice" asp-action="index" class="nav-link ">Notice List</a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="Notice" asp-action="create" class="nav-link ">Create Notice </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item nav-item-submenu">
+                        <a href="#" class="nav-link">
+                            <i class="far fa-comment"></i><span>Home Page Testimonials</span>
+                        </a>
+                        <ul class="nav nav-group-sub">
+                            <li class="nav-item">
+                                <a asp-controller="Testimonial" asp-action="index" class="nav-link ">Testimonial List</a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="Testimonial" asp-action="create" class="nav-link ">Create Testimonial </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ">
+                        <a asp-controller="aboutsection" asp-action="index" class="nav-link"><i class="fas fa-info-circle"></i> <span>Home Page About</span></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a asp-controller="site" asp-action="index" class="nav-link"><i class="fas fa-database"></i> <span>Site Settings</span></a>
                     </li>
                     <li class="nav-item ">
                         <a asp-controller="users" asp-action="index" class="nav-link"> <i class="fas fa-users"></i><span>User List</span></a>

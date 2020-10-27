@@ -196,3 +196,10 @@ C:\Users\agase\OneDrive\Рабочий стол\p314-asp-mvc-project-seynurmamma
 C:\Users\agase\OneDrive\Рабочий стол\p314-asp-mvc-project-seynurmammadov\BackProject\obj\Debug\netcoreapp3.1\Razor\Areas\courses-admin\Views\Slider\Index.cshtml.g.cs
 C:\Users\agase\OneDrive\Рабочий стол\p314-asp-mvc-project-seynurmammadov\BackProject\obj\Debug\netcoreapp3.1\Razor\Areas\courses-admin\Views\Slider\Create.cshtml.g.cs
 C:\Users\agase\OneDrive\Рабочий стол\p314-asp-mvc-project-seynurmammadov\BackProject\obj\Debug\netcoreapp3.1\Razor\Areas\courses-admin\Views\Slider\Update.cshtml.g.cs
+C:\Users\agase\OneDrive\Рабочий стол\p314-asp-mvc-project-seynurmammadov\BackProject\obj\Debug\netcoreapp3.1\Razor\Areas\courses-admin\Views\AboutSection\Index.cshtml.g.cs
+C:\Users\agase\OneDrive\Рабочий стол\p314-asp-mvc-project-seynurmammadov\BackProject\obj\Debug\netcoreapp3.1\Razor\Areas\courses-admin\Views\Notice\Index.cshtml.g.cs
+C:\Users\agase\OneDrive\Рабочий стол\p314-asp-mvc-project-seynurmammadov\BackProject\obj\Debug\netcoreapp3.1\Razor\Areas\courses-admin\Views\Notice\Update.cshtml.g.cs
+C:\Users\agase\OneDrive\Рабочий стол\p314-asp-mvc-project-seynurmammadov\BackProject\obj\Debug\netcoreapp3.1\Razor\Areas\courses-admin\Views\Notice\Create.cshtml.g.cs
+C:\Users\agase\OneDrive\Рабочий стол\p314-asp-mvc-project-seynurmammadov\BackProject\obj\Debug\netcoreapp3.1\Razor\Areas\courses-admin\Views\Testimonial\Index.cshtml.g.cs
+C:\Users\agase\OneDrive\Рабочий стол\p314-asp-mvc-project-seynurmammadov\BackProject\obj\Debug\netcoreapp3.1\Razor\Areas\courses-admin\Views\Testimonial\Create.cshtml.g.cs
+C:\Users\agase\OneDrive\Рабочий стол\p314-asp-mvc-project-seynurmammadov\BackProject\obj\Debug\netcoreapp3.1\Razor\Areas\courses-admin\Views\Testimonial\Update.cshtml.g.cs

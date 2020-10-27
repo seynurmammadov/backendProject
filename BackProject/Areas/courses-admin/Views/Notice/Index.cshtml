@@ -1,0 +1,59 @@
+﻿@model NoticeSection
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="card">
+    <div class="card-header header-elements-inline">
+        <h5 class="card-title">Category</h5>
+        <div class="header-elements">
+            <div class="list-icons">
+                <a class="list-icons-item" data-action="collapse"></a>
+                <a class="list-icons-item" data-action="reload"></a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div asp-validation-summary="ModelOnly" class="text-danger text-capitalize"></div>
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="VideoUrl"></label>
+                <input asp-for="VideoUrl" class="form-control mb-3" placeholder="Enter title">
+                <span class="text-warning" asp-validation-for="VideoUrl"></span>
+            </div>
+            <div class="d-flex justify-content-end align-items-center">
+                <button type="submit" class="btn bg-blue ml-3 legitRipple">Submit <i class="icon-paperplane ml-2"></i></button>
+            </div>
+        </form>
+    </div>
+
+    <table class="table category-datatable">
+        <thead>
+            <tr>
+                <th>Notice Time</th>
+                <th>Status</th>
+                <th class="text-right">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Notice item in Model.Notices)
+            {
+                <tr>
+                    <td class="text-capitalize">@item.NoticeTime</td>
+                    <td class="text-capitalize">@item.NoticeText</td>
+                    <td class="text-right">
+                        <div class="list-icons">
+                            <a asp-action="update" asp-route-id="@item.Id" class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
+                            <a class="list-icons-item text-danger-600 delete" data-id="@item.Id"><i class="icon-trash"></i></a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section ThemeScript{
+    <script src="~/Admin/global_assets/js/plugins/tables/datatables/datatables.min.js"></script>
+    <script src="~/Admin/global_assets/js/plugins/notifications/sweet_alert.min.js"></script>
+}

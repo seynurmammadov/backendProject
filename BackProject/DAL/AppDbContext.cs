@@ -29,5 +29,14 @@ namespace BackProject.DAL
         public DbSet<BlogModerator> BlogModerators { get; set; }
         public DbSet<SiteInfo> SiteInfo { get; set; }
         public DbSet<Sliders> Sliders { get; set; }
+        public DbSet<AboutSection> AboutSections { get; set; }
+
+        public DbSet<NoticeSection> NoticeSections { get; set; }
+        public DbSet<Notice> Notices { get; set; }
+        public DbSet<TestimonialSection> TestimonialSections { get; set; }
+
+
+
+
     }
 }

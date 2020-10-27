@@ -4,14 +4,16 @@ using BackProject.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BackProject.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201027180655_HomeSectionsModels")]
+    partial class HomeSectionsModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -438,7 +440,10 @@ namespace BackProject.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("NoticeSectionId")
+                    b.Property<int>("NoticeId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("NoticeSectionId")
                         .HasColumnType("int");
 
                     b.Property<string>("NoticeText")
@@ -449,9 +454,14 @@ namespace BackProject.Migrations
                     b.Property<DateTime>("NoticeTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("NoticesId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("NoticeSectionId");
+
+                    b.HasIndex("NoticesId");
 
                     b.ToTable("Notices");
                 });
@@ -936,11 +946,13 @@ namespace BackProject.Migrations
 
             modelBuilder.Entity("BackProject.Models.Notice", b =>
                 {
-                    b.HasOne("BackProject.Models.NoticeSection", "Notices")
+                    b.HasOne("BackProject.Models.NoticeSection", null)
                         .WithMany("Notices")
-                        .HasForeignKey("NoticeSectionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("NoticeSectionId");
+
+                    b.HasOne("BackProject.Models.Notice", "Notices")
+                        .WithMany()
+                        .HasForeignKey("NoticesId");
                 });
 
             modelBuilder.Entity("BackProject.Models.TeacherDescription", b =>
