@@ -59,10 +59,18 @@ namespace BackProject.Controllers
             {
                 return RedirectToAction("index", "home");
             }
+            else if (role == Helper.Roles.courseModerator.ToString())
+            {
+                return RedirectToAction("index", "dashboard", new
+                {
+                    area = "courses-admin"
+                });
+            }
             else return RedirectToAction("index", "dashboard", new
             {
                 area = "courses-admin"
             });
+           
 
         }
     }

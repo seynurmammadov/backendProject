@@ -1,6 +1,7 @@
 ﻿@model List<Course>
 @{
-    ViewData["Title"] = "Courses";
+    ViewData["Title"] = "Eduhome - Courses";
+
 }
 @await Component.InvokeAsync("SiteTitle","courses") 
 <!-- Banner Area End -->
@@ -13,14 +14,14 @@
                     <h3>search courses</h3>
                 </div>
                 <div class="course-form">
-                    <form id="search" action="#">
+                    <div id="search" >
                         <input type="search" placeholder="Search..." name="search" />
-                        <button type="submit">search</button>
-                    </form>
+                        <button type='button' id="searchbtn">search</button>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row searchSct" >
 
             @foreach (Course item in Model)
             {

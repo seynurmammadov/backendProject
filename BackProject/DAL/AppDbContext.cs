@@ -34,9 +34,8 @@ namespace BackProject.DAL
         public DbSet<NoticeSection> NoticeSections { get; set; }
         public DbSet<Notice> Notices { get; set; }
         public DbSet<TestimonialSection> TestimonialSections { get; set; }
-
-
-
+        public DbSet<SendMessageFromUser> SendMessageFromUsers { get; set; }
+        public DbSet<SubscribedUsers> SubscribedUsers { get; set; }
 
     }
 }

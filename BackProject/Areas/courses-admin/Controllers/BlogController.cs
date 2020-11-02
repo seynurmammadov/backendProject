@@ -172,7 +172,6 @@ namespace BackProject.Areas.courses_admin.Controllers
 
             blogDb.Name = blog.Name;
             blogDb.Description = blog.Description;
-            blogDb.Activeted = blog.Activeted;
             blogDb.BlogCategories = blogCategories;
             blogDb.BlogModerators = blogModerators;
             await _context.SaveChangesAsync();

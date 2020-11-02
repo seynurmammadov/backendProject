@@ -1442,28 +1442,28 @@ textarea {
     transform: rotate(-30deg);
     width: 45px;
 }
-.course-form form{position: relative; margin-bottom: 50px}
-.course-form form input{
-    width: 100%;
-    border: 1px solid #EBEBEB;
-    background: #F8F8F8;
-    padding: 14px 195px 14px 25px;
-}
-.course-form form button{
-    position: absolute;
-    right: 0;
-    top: 0;
-    background: #EC1C23;
-    color: #fff;
-    height: 50px;
-    width: 185px;
-    content: "";
-    color: #fff;
-    font-weight: 700;
-    text-transform: uppercase;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 18px;
-}
+.course-form div{position: relative; margin-bottom: 50px}
+    .course-form div input {
+        width: 100%;
+        border: 1px solid #EBEBEB;
+        background: #F8F8F8;
+        padding: 14px 195px 14px 25px;
+    }
+    .course-form div button {
+        position: absolute;
+        right: 0;
+        top: 0;
+        background: #EC1C23;
+        color: #fff;
+        height: 50px;
+        width: 185px;
+        content: "";
+        color: #fff;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 18px;
+    }
 .course-details-content{padding-top: 35px; overflow: hidden}
 .course-details-content h2{
     font-size: 28px;
@@ -1530,7 +1530,7 @@ textarea {
     text-align: center;
 }
 .event-img img {
-    width: 100%;
+    width:100%;
 }
 .event-date h3:hover a{
     color: #fefefe;
@@ -2857,4 +2857,7 @@ textarea {
     background-color: #EC1C23;
     border: 1px solid #EC1C23;
     color: #fff;
+}
+.messageEmail {
+    display: none;
 }

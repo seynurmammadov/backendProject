@@ -1,0 +1,77 @@
+﻿@model Blog
+@{
+    ViewData["Title"] = "Admin Panel - Update Blog ";
+    ViewData["TitleNavbar"] = " Update Blog ";
+    bool select = false;
+}
+<div class="card">
+    <div class="card-header header-elements-inline">
+        <h6 class="card-title">Update Blog</h6>
+    </div>
+    <div class="card-body">
+        <div asp-validation-summary="ModelOnly" class="text-danger text-capitalize"></div>
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control mb-3" placeholder="Enter Name">
+                <span class="text-warning" asp-validation-for="Name"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="form-group">
+                    <label asp-for="Description"></label>
+                    <textarea asp-for="Description" class="form-control description" rows="4" cols="4"></textarea>
+                    <span class="text-warning" asp-validation-for="Description"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Image</label>
+                <img src="~/Site/img/blog/@Model.Image" width="500" alt="Alternate Text" />
+            </div>
+            <div class="form-group row">
+                <label asp-for="Photo" class="col-lg-2 col-form-label font-weight-semibold"></label>
+                <div class="col-lg-10">
+                    <input asp-for="Photo" accept="image/*" class="file-input-slider-main" data-fouc>
+                </div>
+                <span class="text-warning" asp-validation-for="Photo"></span>
+            </div>
+
+            <div class="form-group d-flex">
+                <div class="form-group col-6 pl-0">
+                    <label>Categories</label>
+                    <select multiple="multiple" class="form-control select" name="Categories" data-placeholder="Select Categories..." data-fouc>
+                        @foreach (Category ctg in ViewBag.Categories)
+                        {
+                            @foreach (BlogCategory selectedCtg in Model.BlogCategories)
+                            {
+                                @if (selectedCtg.CategoryId == ctg.Id)
+                                {
+                                    <option class="text-capitalize" selected value="@ctg.Id">@ctg.Name</option>
+                                    select = true;
+                                }
+                            }
+                            if (select != true)
+                            {
+                                <option class="text-capitalize" value="@ctg.Id">@ctg.Name</option>
+                            }
+                            else select = false;
+                        }
+                        @{select = false;};
+                    </select>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-end align-items-center">
+                <button type="submit" class="btn bg-blue ml-3 legitRipple">Submit <i class="icon-paperplane ml-2"></i></button>
+            </div>
+        </form>
+    </div>
+</div>
+@section ThemeScript{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Admin/global_assets/js/plugins/editors/ckeditor/ckeditor.js"></script>
+    <script src="~/Admin/global_assets/js/plugins/extensions/jquery_ui/interactions.min.js"></script>
+    <script src="~/Admin/global_assets/js/plugins/forms/selects/select2.min.js"></script>
+    <script src="~/Admin/global_assets/js/plugins/uploaders/fileinput/fileinput.min.js"></script>
+}

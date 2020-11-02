@@ -1,17 +1,12 @@
 ﻿@model Course
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Admin Panel - Update Course ";
+    ViewData["TitleNavbar"] = " Update Course ";
     bool select = false;
 }
 <div class="card">
     <div class="card-header header-elements-inline">
-        <h6 class="card-title">Create Course</h6>
-        <div class="header-elements">
-            <div class="list-icons">
-                <a class="list-icons-item" data-action="collapse"></a>
-                <a class="list-icons-item" data-action="reload"></a>
-            </div>
-        </div>
+        <h6 class="card-title">Update Course</h6>
     </div>
     <div class="card-body">
         <div asp-validation-summary="ModelOnly" class="text-danger text-capitalize"></div>
@@ -90,11 +85,7 @@
                     </select>
                 </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Activeted">Active course after update? </label>
-                <input asp-for="Activeted" checked>
-                <span class="text-warning" asp-validation-for="Activeted"></span>
-            </div>
+
             <div class="d-flex justify-content-end align-items-center">
                 <button type="submit" class="btn bg-blue ml-3 legitRipple">Submit <i class="icon-paperplane ml-2"></i></button>
             </div>
@@ -107,7 +98,5 @@
     <script src="~/Admin/global_assets/js/plugins/editors/ckeditor/ckeditor.js"></script>
     <script src="~/Admin/global_assets/js/plugins/extensions/jquery_ui/interactions.min.js"></script>
     <script src="~/Admin/global_assets/js/plugins/forms/selects/select2.min.js"></script>
-    <script src="~/Admin/global_assets/js/plugins/uploaders/fileinput/plugins/purify.min.js"></script>
-    <script src="~/Admin/global_assets/js/plugins/uploaders/fileinput/plugins/sortable.min.js"></script>
     <script src="~/Admin/global_assets/js/plugins/uploaders/fileinput/fileinput.min.js"></script>
 }

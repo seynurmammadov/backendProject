@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using BackProject.DAL;
 using BackProject.Extentions;
 using BackProject.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,7 +15,7 @@ using Microsoft.EntityFrameworkCore;
 namespace BackProject.Areas.courses_admin.Controllers
 {
     [Area("courses-admin")]
-    [Microsoft.AspNetCore.Authorization.Authorize(Roles = "Admin,MainAdmin")]
+    [Authorize(Roles = "Admin,MainAdmin")]
     public class SiteController : Controller
     {
         private readonly AppDbContext _context;

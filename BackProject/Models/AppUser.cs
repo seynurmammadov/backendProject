@@ -19,6 +19,7 @@ namespace BackProject.Models
         [NotMapped]
         public IFormFile Photo { get; set; }
         public bool Activeted { get; set; }
+        public string ActiveCode { get; set; }
         public ICollection<CourseModerator> CourseModerators { get; set; }
         public ICollection<EventModerator> EventModerators { get; set; }
         public ICollection<BlogModerator> BlogModerators { get; set; }

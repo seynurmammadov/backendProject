@@ -1,6 +1,7 @@
 ﻿@model CourseVM
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Eduhome - Course Details";
+
     List<string> autors = new List<string>();
 }
 
@@ -15,14 +16,14 @@
             <div class="col-md-8">
                 <div class="courses-details">
                     <div class="courses-details-img">
-                        <img src="~/site/img/course/@Model.Course.Image" alt="courses-details">
+                        <img src="~/site/img/course/@Model.Course.Image" width="770" height="410" alt="courses-details">
                     </div>
                     <div class="course-details-content">
                         <h2>@Model.Course.Name</h2>
                         <p>@Model.Course.ShortDescription</p>
                         @Html.Raw(Model.Course.Description)
                     </div>
-                    @await Component.InvokeAsync("LeaveReply");
+                    @await Component.InvokeAsync("LeaveReply")
 
                 </div>
             </div>
@@ -31,8 +32,8 @@
                     <div class="single-blog-widget mb-50">
                         <h3>search</h3>
                         <div class="blog-search">
-                            <form id="search" action="#">
-                                <input type="search" placeholder="Search..." name="search" />
+                            <form id="search" action="../../search">
+                                <input type="search" placeholder="Search..." name="val" />
                                 <button type="submit">
                                     <span><i class="fa fa-search"></i></span>
                                 </button>
@@ -44,7 +45,7 @@
                         <ul>
                             @foreach (CourseCategory item in Model.Course.CourseCategories)
                             {
-                                <li><a href="#">@item.Category.Name (@item.Category.CourseCategories.Count())</a></li>
+                                <li><a asp-controller="course" asp-action="index" asp-route-id="@item.CategoryId">@item.Category.Name (@item.Category.CourseCategories.Where(c=>c.CategoryId==item.CategoryId && c.Activeted && !c.IsDeleted).Count())</a></li>
                             }
                         </ul>
                     </div>
@@ -104,5 +105,5 @@
 </div>
 <!-- Blog End -->
 <!-- Subscribe Start -->
-@await Component.InvokeAsync("Subscribe");
+@await Component.InvokeAsync("Subscribe")
 <!-- Subscribe End -->

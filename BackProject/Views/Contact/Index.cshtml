@@ -1,6 +1,7 @@
 ﻿@model SiteInfo
 @{
-    ViewData["Title"] = "contact";
+    ViewData["Title"] = "Eduhome - Contact";
+
 }
 @await Component.InvokeAsync("SiteTitle", "contact")
 <!-- Contact Start -->
@@ -71,7 +72,7 @@
             var marker = new google.maps.Marker({
                 position: map.getCenter(),
                 animation: google.maps.Animation.BOUNCE,
-                icon: 'img/map-marker.png',
+                icon: 'site/img/map-marker.png',
                 map: map
             });
         }

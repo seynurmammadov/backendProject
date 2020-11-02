@@ -32,6 +32,12 @@
 
         <ul class="navbar-nav ml-md-auto">
             <li class="nav-item">
+                <a asp-area="default" asp-controller="home" asp-action="index" class="navbar-nav-link">
+                    <i class="fas fa-home"></i>
+                    <span class="d-md-none ml-2">Site Page</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a asp-area="default" asp-controller="register" asp-action="logout" class="navbar-nav-link">
                     <i class="icon-switch2"></i>
                     <span class="d-md-none ml-2">Logout</span>
@@ -67,7 +73,7 @@
                 <div class="sidebar-user-material-body">
                     <div class="card-body text-center">
                         <a href="#">
-                            <img src="~/Admin/global_assets/images/placeholders/placeholder.jpg" class="img-fluid rounded-circle shadow-1 mb-3" width="80" height="80" alt="">
+                            <img src="~/Site/img/users/@Model.Image" class="img-fluid rounded-circle shadow-1 mb-3" width="80" height="80" alt="">
                         </a>
                         <h6 class="mb-0 text-white text-shadow-dark">@Model.Name @Model.Surname</h6>
                         <span class="font-size-sm text-white text-shadow-dark text-capitalize">@Model.Role</span>
@@ -81,7 +87,7 @@
                 <div class="collapse" id="user-nav">
                     <ul class="nav nav-sidebar">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a asp-controller="accountsettings" asp-action="index" class="nav-link">
                                 <i class="icon-cog5"></i>
                                 <span>Account settings</span>
                             </a>
@@ -102,136 +108,157 @@
 
                     <!-- Main -->
                     <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i></li>
-                    <li class="nav-item">
-                        <a asp-controller="dashboard" asp-action="index" class="nav-link">
-                            <i class="icon-home4"></i>
-                            <span>
-                                Dashboard
-                            </span>
-                        </a>
-                    </li>
+                    @if (Model.Role != "courseModerator")
+                    {
+                        <li class="nav-item">
+                            <a asp-controller="dashboard" asp-action="index" class="nav-link">
+                                <i class="icon-home4"></i>
+                                <span>
+                                    Dashboard
+                                </span>
+                            </a>
+                        </li>
 
-                    <li class="nav-item nav-item-submenu">
-                        <a href="#" class="nav-link"><i class="fas fa-layer-group"></i> <span>Category</span></a>
+                        <li class="nav-item nav-item-submenu">
+                            <a href="#" class="nav-link"><i class="fas fa-layer-group"></i> <span>Category</span></a>
 
-                        <ul class="nav nav-group-sub">
-                            <li class="nav-item">
-                                <a asp-controller="category" asp-action="index" class="nav-link ">Category List</a>
-                            </li>
-                            <li class="nav-item">
-                                <a asp-controller="category" asp-action="create" class="nav-link ">Create Category </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item nav-item-submenu">
-                        <a href="#" class="nav-link"><i class="fab fa-leanpub"></i> <span>Courses</span></a>
-
-                        <ul class="nav nav-group-sub">
-                            <li class="nav-item">
-                                <a asp-controller="course" asp-action="index" class="nav-link ">Courses List</a>
-                            </li>
-                            <li class="nav-item">
-                                <a asp-controller="course" asp-action="create" class="nav-link ">Create Course </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item nav-item-submenu">
-                        <a href="#" class="nav-link"><i class="far fa-calendar-check"></i> <span>Event</span></a>
-
-                        <ul class="nav nav-group-sub">
-                            <li class="nav-item">
-                                <a asp-controller="event" asp-action="index" class="nav-link ">Event List</a>
-                            </li>
-                            <li class="nav-item">
-                                <a asp-controller="event" asp-action="create" class="nav-link ">Create Event </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item nav-item-submenu">
-                        <a href="#" class="nav-link"><i class="fas fa-hashtag"></i> <span>Tags</span></a>
-                        <ul class="nav nav-group-sub">
-                            <li class="nav-item">
-                                <a asp-controller="tag" asp-action="index" class="nav-link ">Tags List</a>
-                            </li>
-                            <li class="nav-item">
-                                <a asp-controller="tag" asp-action="create" class="nav-link ">Create Tag </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item nav-item-submenu">
-                        <a href="#" class="nav-link"><i class="fas fa-chalkboard-teacher"></i> <span>Teachers</span></a>
-                        <ul class="nav nav-group-sub">
-                            <li class="nav-item">
-                                <a asp-controller="teacher" asp-action="index" class="nav-link ">Teachers List</a>
-                            </li>
-                            <li class="nav-item">
-                                <a asp-controller="teacher" asp-action="create" class="nav-link ">Create Teacher </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item nav-item-submenu">
-                        <a href="#" class="nav-link"><i class="fab fa-blogger-b"></i> <span>Blogs</span></a>
-                        <ul class="nav nav-group-sub">
-                            <li class="nav-item">
-                                <a asp-controller="Blog" asp-action="index" class="nav-link ">Blogs List</a>
-                            </li>
-                            <li class="nav-item">
-                                <a asp-controller="Blog" asp-action="create" class="nav-link ">Create Blog </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item nav-item-submenu">
-                        <a href="#" class="nav-link"><i class="icon-images2"></i> <span>Home Page Slider</span></a>
-
-                        <ul class="nav nav-group-sub">
-                            <li class="nav-item">
-                                <a asp-controller="slider" asp-action="index" class="nav-link ">Slider Items List</a>
-                            </li>
-                            @if (ViewBag.MainSliderCount < 5)
-                            {
+                            <ul class="nav nav-group-sub">
                                 <li class="nav-item">
-                                    <a asp-controller="slider" asp-action="create" class="nav-link ">Create Slider Item</a>
+                                    <a asp-controller="category" asp-action="index" class="nav-link ">Category List</a>
                                 </li>
-                            }
-                        </ul>
-                    </li>
+                                <li class="nav-item">
+                                    <a asp-controller="category" asp-action="create" class="nav-link ">Create Category </a>
+                                </li>
+                            </ul>
+                        </li>
 
-                    <li class="nav-item nav-item-submenu">
-                        <a href="#" class="nav-link"><i class="fas fa-exclamation-triangle "></i> <span>Home Page Notices</span></a>
-                        <ul class="nav nav-group-sub">
-                            <li class="nav-item">
-                                <a asp-controller="Notice" asp-action="index" class="nav-link ">Notice List</a>
-                            </li>
-                            <li class="nav-item">
-                                <a asp-controller="Notice" asp-action="create" class="nav-link ">Create Notice </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item nav-item-submenu">
-                        <a href="#" class="nav-link">
-                            <i class="far fa-comment"></i><span>Home Page Testimonials</span>
-                        </a>
-                        <ul class="nav nav-group-sub">
-                            <li class="nav-item">
-                                <a asp-controller="Testimonial" asp-action="index" class="nav-link ">Testimonial List</a>
-                            </li>
-                            <li class="nav-item">
-                                <a asp-controller="Testimonial" asp-action="create" class="nav-link ">Create Testimonial </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item ">
-                        <a asp-controller="aboutsection" asp-action="index" class="nav-link"><i class="fas fa-info-circle"></i> <span>Home Page About</span></a>
-                    </li>
-                    <li class="nav-item ">
-                        <a asp-controller="site" asp-action="index" class="nav-link"><i class="fas fa-database"></i> <span>Site Settings</span></a>
-                    </li>
-                    <li class="nav-item ">
-                        <a asp-controller="users" asp-action="index" class="nav-link"> <i class="fas fa-users"></i><span>User List</span></a>
-                    </li>
+                        <li class="nav-item nav-item-submenu">
+                            <a href="#" class="nav-link"><i class="fab fa-leanpub"></i> <span>Courses</span></a>
 
+                            <ul class="nav nav-group-sub">
+                                <li class="nav-item">
+                                    <a asp-controller="course" asp-action="index" class="nav-link ">Courses List</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="course" asp-action="create" class="nav-link ">Create Course </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item nav-item-submenu">
+                            <a href="#" class="nav-link"><i class="far fa-calendar-check"></i> <span>Event</span></a>
+
+                            <ul class="nav nav-group-sub">
+                                <li class="nav-item">
+                                    <a asp-controller="event" asp-action="index" class="nav-link ">Event List</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="event" asp-action="create" class="nav-link ">Create Event </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item nav-item-submenu">
+                            <a href="#" class="nav-link"><i class="fas fa-hashtag"></i> <span>Tags</span></a>
+                            <ul class="nav nav-group-sub">
+                                <li class="nav-item">
+                                    <a asp-controller="tag" asp-action="index" class="nav-link ">Tags List</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="tag" asp-action="create" class="nav-link ">Create Tag </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item nav-item-submenu">
+                            <a href="#" class="nav-link"><i class="fas fa-chalkboard-teacher"></i> <span>Teachers</span></a>
+                            <ul class="nav nav-group-sub">
+                                <li class="nav-item">
+                                    <a asp-controller="teacher" asp-action="index" class="nav-link ">Teachers List</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="teacher" asp-action="create" class="nav-link ">Create Teacher </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item nav-item-submenu">
+                            <a href="#" class="nav-link"><i class="fab fa-blogger-b"></i> <span>Blogs</span></a>
+                            <ul class="nav nav-group-sub">
+                                <li class="nav-item">
+                                    <a asp-controller="Blog" asp-action="index" class="nav-link ">Blogs List</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="Blog" asp-action="create" class="nav-link ">Create Blog </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item nav-item-submenu">
+                            <a href="#" class="nav-link"><i class="icon-images2"></i> <span>Home Page Slider</span></a>
+
+                            <ul class="nav nav-group-sub">
+                                <li class="nav-item">
+                                    <a asp-controller="slider" asp-action="index" class="nav-link ">Slider Items List</a>
+                                </li>
+                                @if (ViewBag.MainSliderCount < 5)
+                                {
+                                    <li class="nav-item">
+                                        <a asp-controller="slider" asp-action="create" class="nav-link ">Create Slider Item</a>
+                                    </li>
+                                }
+                            </ul>
+                        </li>
+
+                        <li class="nav-item nav-item-submenu">
+                            <a href="#" class="nav-link"><i class="fas fa-exclamation-triangle "></i> <span>Home Page Notices</span></a>
+                            <ul class="nav nav-group-sub">
+                                <li class="nav-item">
+                                    <a asp-controller="Notice" asp-action="index" class="nav-link ">Notice List</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="Notice" asp-action="create" class="nav-link ">Create Notice </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item nav-item-submenu">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-comment"></i><span>Home Page Testimonials</span>
+                            </a>
+                            <ul class="nav nav-group-sub">
+                                <li class="nav-item">
+                                    <a asp-controller="Testimonial" asp-action="index" class="nav-link ">Testimonial List</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="Testimonial" asp-action="create" class="nav-link ">Create Testimonial </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item ">
+                            <a asp-controller="aboutsection" asp-action="index" class="nav-link"><i class="fas fa-info-circle"></i> <span>Home Page About</span></a>
+                        </li>
+                        <li class="nav-item ">
+                            <a asp-controller="usermessage" asp-action="index" class="nav-link"><i class="fas fa-envelope "></i> <span>Users Message</span></a>
+                        </li>
+                        
+                        <li class="nav-item ">
+                            <a asp-controller="site" asp-action="index" class="nav-link"><i class="fas fa-database"></i> <span>Site Settings</span></a>
+                        </li>
+                        <li class="nav-item ">
+                            <a asp-controller="users" asp-action="index" class="nav-link"> <i class="fas fa-users"></i><span>User List</span></a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a asp-controller="coursemoder" asp-action="index" class="nav-link"><i class="fab fa-leanpub"></i> <span>My Courses List</span></a>
+
+                        </li>
+                        <li class="nav-item">
+                            <a asp-controller="eventmoder" asp-action="index" class="nav-link"><i class="far fa-calendar-check"></i> <span>My Events List</span></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a asp-controller="blogmoder" asp-action="index" class="nav-link"><i class="fab fa-blogger-b"></i> <span>My Blogs List</span></a>
+                        </li>
+
+                    }
                     <!-- /main -->
 
 
@@ -249,18 +276,13 @@
 
         <!-- Page header -->
         <div class="page-header page-header-light">
-            <div class="page-header-content header-elements-md-inline">
-                <div class="page-title d-flex">
-                    <h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">Home</span> - Dashboard</h4>
-                    <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
-                </div>
-            </div>
+            
 
             <div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
                 <div class="d-flex">
                     <div class="breadcrumb">
-                        <a href="index.html" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
-                        <span class="breadcrumb-item active">Dashboard</span>
+                        <a asp-controller="dashboard" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
+                        <span class="breadcrumb-item active"> @ViewData["TitleNavbar"]</span>
                     </div>
 
                     <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>

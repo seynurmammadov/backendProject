@@ -25,7 +25,7 @@ namespace BackProject.Areas.courses_admin.Controllers
             _db = db;
             _roleManager = roleManager;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index()    
         {
             List<AppUser> appUsers = _userManager.Users.ToList();
             List<UserVM> userVMs = new List<UserVM>();

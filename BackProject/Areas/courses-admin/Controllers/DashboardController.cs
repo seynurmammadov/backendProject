@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BackProject.Areas.courses_admin.Controllers
 {
     [Area("courses-admin")]
-    [Authorize(Roles = "Admin,MainAdmin")]
+    [Authorize(Roles = "Admin,MainAdmin,courseModerator")]
     public class DashboardController : Controller
     {
         public IActionResult Index()

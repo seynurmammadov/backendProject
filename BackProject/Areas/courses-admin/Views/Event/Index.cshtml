@@ -1,17 +1,11 @@
 ﻿
 @{
-    ViewData["Title"] = "Event";
+    ViewData["Title"] = "Admin Panel - Events List ";
+    ViewData["TitleNavbar"] = " Events List ";
 }
-
 <div class="card">
     <div class="card-header header-elements-inline">
-        <h5 class="card-title">Courses</h5>
-        <div class="header-elements">
-            <div class="list-icons">
-                <a class="list-icons-item" data-action="collapse"></a>
-                <a class="list-icons-item" data-action="reload"></a>
-            </div>
-        </div>
+        <h5 class="card-title">Events List</h5>
     </div>
     <table class="table category-datatable">
         <thead>
@@ -30,54 +24,54 @@
         <tbody>
             @foreach (Event item in Model)
             {
-            <tr>
-                <td class="text-capitalize">@item.Title</td>
+                <tr>
+                    <td class="text-capitalize">@item.Title</td>
 
-                <td class="text-capitalize">
-                    @foreach (EventModerator moderatorName in @item.EventModerators)
-                    {
-                        <p class="text-capitalize">@moderatorName.Moderator.Name</p>
-                    }
-                </td>
-
-                <td class="text-capitalize">
-                    <ol class="pl-3  ">
-                        @foreach (EventCategory categoryName in @item.EventCategories)
+                    <td class="text-capitalize">
+                        @foreach (EventModerator moderatorName in @item.EventModerators)
                         {
-                            <li class="text-capitalize"> @categoryName.Category.Name</li>
+                            <p class="text-capitalize">@moderatorName.Moderator.Name</p>
                         }
-                    </ol>
-                </td>
-                <td class="text-capitalize">@item.StartTime.ToString("dd MMMM HH:mm ")</td>
-                <td class="text-capitalize">@item.EndTime.ToString("dd MMMM HH:mm ")</td>
-                <td class="text-capitalize">@item.Created_at.ToString("MMMM dd, yyyy")</td>
+                    </td>
 
-                @if (item.Activeted)
-                {
-                    <td class=" text-capitalize text-success status-text">Active</td>
-                }
-                else
-                {
-                    <td class="text-capitalize text-danger status-text">Disable</td>
-                }
-                <td class="text-center ">
-                    @if (!item.Activeted)
+                    <td class="text-capitalize">
+                        <ol class="pl-3  ">
+                            @foreach (EventCategory categoryName in @item.EventCategories)
+                            {
+                                <li class="text-capitalize"> @categoryName.Category.Name</li>
+                            }
+                        </ol>
+                    </td>
+                    <td class="text-capitalize">@item.StartTime.ToString("dd MMMM HH:mm ")</td>
+                    <td class="text-capitalize">@item.EndTime.ToString("dd MMMM HH:mm ")</td>
+                    <td class="text-capitalize">@item.Created_at.ToString("MMMM dd, yyyy")</td>
+
+                    @if (item.Activeted)
                     {
-                        <a class="text-capitalize text-white btn btn-success status " data-id="@item.Id">Active</a>
+                        <td class=" text-capitalize text-success status-text">Active</td>
                     }
                     else
                     {
-                        <a class="text-capitalize text-white btn btn-danger status" data-id="@item.Id">Disable</a>
+                        <td class="text-capitalize text-danger status-text">Disable</td>
                     }
-                </td>
-                <td class="text-right">
-                    <div class="list-icons">
+                    <td class="text-center ">
+                        @if (!item.Activeted)
+                        {
+                            <a class="text-capitalize text-white btn btn-success status " data-id="@item.Id">Active</a>
+                        }
+                        else
+                        {
+                            <a class="text-capitalize text-white btn btn-danger status" data-id="@item.Id">Disable</a>
+                        }
+                    </td>
+                    <td class="text-right">
+                        <div class="list-icons">
 
-                        <a asp-action="update" asp-route-id="@item.Id" class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
-                        <a class="list-icons-item text-danger-600 delete" data-id="@item.Id"><i class="icon-trash"></i></a>
-                    </div>
-                </td>
-            </tr>
+                            <a asp-action="update" asp-route-id="@item.Id" class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
+                            <a class="list-icons-item text-danger-600 delete" data-id="@item.Id"><i class="icon-trash"></i></a>
+                        </div>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>

@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using BackProject.DAL;
 using BackProject.Extentions;
 using BackProject.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -21,11 +25,14 @@ namespace BackProject.Areas.courses_admin.Controllers
         private readonly AppDbContext _context;
         private readonly UserManager<AppUser> _userManager;
         private readonly IWebHostEnvironment _env;
-        public EventController(AppDbContext context, UserManager<AppUser> userManager, IWebHostEnvironment env)
+        private readonly IHttpContextAccessor _contextAccessor;
+
+        public EventController(AppDbContext context, UserManager<AppUser> userManager, IWebHostEnvironment env, IHttpContextAccessor contextAccessor)
         {
             _context = context;
             _userManager = userManager;
             _env = env;
+            _contextAccessor = contextAccessor;
         }
         public IActionResult Index()
         {
@@ -94,6 +101,30 @@ namespace BackProject.Areas.courses_admin.Controllers
             @event.Created_at = DateTime.Now;
             await _context.Events.AddAsync(@event);
             await _context.SaveChangesAsync();
+           
+            List<SubscribedUsers> subscribedUsers = _context.SubscribedUsers.Where(s => s.Actived).ToList();
+
+            foreach (SubscribedUsers user in subscribedUsers)
+            {
+                string url = _contextAccessor.HttpContext.Request.Scheme + System.Uri.SchemeDelimiter + _contextAccessor.HttpContext.Request.Host.Value + "/reset/unsubscribe/" + user.ActiveCode;
+                MailMessage message = new MailMessage();
+                message.From = new MailAddress("eduhomeproject@gmail.com", "Home Education");
+                message.To.Add(new MailAddress(user.Email));
+
+                message.Subject = "New Event!";
+                message.Body = "We have a new event go to site for check him! if you want to unsubscribe notification <a href='"+ url + "'>click</a>";
+                message.IsBodyHtml = true;
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp.gmail.com";
+                smtp.Port = 587;
+                smtp.EnableSsl = true;
+
+                smtp.Credentials = new NetworkCredential("eduhomeproject@gmail.com", "seynur2462736");
+                smtp.Send(message);
+            }
+
+
+
             return RedirectToAction(nameof(Index));
         }
         public async Task<IActionResult> Update(int? id)
@@ -177,7 +208,6 @@ namespace BackProject.Areas.courses_admin.Controllers
             eventDb.EndTime = @event.EndTime;
             eventDb.Description = @event.Description;
             eventDb.Venue = @event.Venue;
-            eventDb.Activeted = @event.Activeted;
             eventDb.EventCategories = eventCategories;
             eventDb.EventModerators = eventModerators;
             await _context.SaveChangesAsync();

@@ -1,23 +1,18 @@
 ﻿@model Category
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Admin Panel - Create Category ";
+    ViewData["TitleNavbar"] = " Create Category ";
 }
 
 <!-- Status text + button -->
 <div class="card">
     <div class="card-header header-elements-inline">
         <h6 class="card-title">Create Category</h6>
-        <div class="header-elements">
-            <div class="list-icons">
-                <a class="list-icons-item" data-action="collapse"></a>
-                <a class="list-icons-item" data-action="reload"></a>
-            </div>
-        </div>
     </div>
 
     <div class="card-body">
         <form method="post">
-            <div class="form-group">
+            <div class="form-group col-3">
                 <label asp-for="Name"></label>
                 <input asp-for="Name" class="form-control mb-3" placeholder="Enter Name">
                 <span class="text-warning" asp-validation-for="Name"></span>

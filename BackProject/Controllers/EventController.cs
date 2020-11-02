@@ -18,10 +18,24 @@ namespace BackProject.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+        public IActionResult Index(int? id)
         {
-            List<Event> @event = _context.Events.Where(e => !e.IsDeleted && e.Activeted).OrderByDescending(e => e.Created_at).Take(9).ToList();
-            return View(@event);
+            if (id == null)
+            {
+                List<Event> @event = _context.Events.Where(e => !e.IsDeleted && e.Activeted).OrderByDescending(e => e.Created_at).Take(9).ToList();
+                return View(@event);
+
+            }
+            else
+            {
+                List<EventCategory> eventCategories = _context.EventCategories.Where(e => e.Activeted && !e.IsDeleted && e.CategoryId == id).Include(c => c.Event).ToList();
+                List<Event> @event = new List<Event>();
+                foreach (EventCategory item in eventCategories)
+                {
+                    @event.Add(item.Event);
+                }
+                return View(@event);
+            }
         }
 
 
@@ -45,6 +59,11 @@ namespace BackProject.Controllers
                 Tags = tags
             };
             return View(eventVM);
+        }
+        public IActionResult Search(string val)
+        {
+            List<Event> events = _context.Events.Where(e => !e.IsDeleted && e.Activeted && e.Title.Contains(val)).OrderByDescending(e => e.Created_at).Take(10).ToList();
+            return PartialView("_SearchPartialEvent", events);
         }
     }
 }

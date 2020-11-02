@@ -1,16 +1,11 @@
 ﻿@model Sliders
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Admin Panel - Create Slider";
+    ViewData["TitleNavbar"] = " Create Slider ";
 }
 <div class="card">
     <div class="card-header header-elements-inline">
         <h6 class="card-title">Create Slide</h6>
-        <div class="header-elements">
-            <div class="list-icons">
-                <a class="list-icons-item" data-action="collapse"></a>
-                <a class="list-icons-item" data-action="reload"></a>
-            </div>
-        </div>
     </div>
     <div class="card-body">
         <div asp-validation-summary="ModelOnly" class="text-danger text-capitalize"></div>
@@ -47,7 +42,5 @@
 @section ThemeScript{
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
-    <script src="~/Admin/global_assets/js/plugins/uploaders/fileinput/plugins/purify.min.js"></script>
-    <script src="~/Admin/global_assets/js/plugins/uploaders/fileinput/plugins/sortable.min.js"></script>
     <script src="~/Admin/global_assets/js/plugins/uploaders/fileinput/fileinput.min.js"></script>
 }

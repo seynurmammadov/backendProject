@@ -1,17 +1,12 @@
 ﻿@model Blog
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Admin Panel - Create Blog";
+    ViewData["TitleNavbar"] = " Create Blog ";
 }
 
 <div class="card">
     <div class="card-header header-elements-inline">
-        <h6 class="card-title">Create Course</h6>
-        <div class="header-elements">
-            <div class="list-icons">
-                <a class="list-icons-item" data-action="collapse"></a>
-                <a class="list-icons-item" data-action="reload"></a>
-            </div>
-        </div>
+        <h6 class="card-title">Create Blog</h6>
     </div>
     <div class="card-body">
         <div asp-validation-summary="ModelOnly" class="text-danger text-capitalize"></div>
@@ -74,7 +69,5 @@
     <script src="~/Admin/global_assets/js/plugins/editors/ckeditor/ckeditor.js"></script>
     <script src="~/Admin/global_assets/js/plugins/extensions/jquery_ui/interactions.min.js"></script>
     <script src="~/Admin/global_assets/js/plugins/forms/selects/select2.min.js"></script>
-    <script src="~/Admin/global_assets/js/plugins/uploaders/fileinput/plugins/purify.min.js"></script>
-    <script src="~/Admin/global_assets/js/plugins/uploaders/fileinput/plugins/sortable.min.js"></script>
     <script src="~/Admin/global_assets/js/plugins/uploaders/fileinput/fileinput.min.js"></script>
 }

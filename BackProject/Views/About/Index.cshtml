@@ -1,0 +1,142 @@
+﻿@model HomeVM
+@{
+    ViewData["Title"] = "Eduhome - About";
+}
+<!-- Banner Area Start --><!-- Banner Area Start -->
+@await Component.InvokeAsync("SiteTitle", "About Us")
+
+<!-- Banner Area End -->
+<!-- About Start -->
+<div class="about-area pb-155">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <div class="about-content">
+                    <h2>@Html.Raw(Model.AboutSections.Title)</h2>
+
+                    <p class="hidden-sm">@Model.AboutSections.Description</p>
+                    <a class="default-btn" asp-controller="course" asp-action="index">view courses</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="about-img">
+                    <img src="~/site/img/about/@Model.AboutSections.Image" alt="about">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+<!-- Teacher Start -->
+<div class="teacher-area pb-150">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="section-title text-center">
+                    <img src="~/site/img/icon/section.png" alt="title">
+                    <h2>meet our teachers</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (Teacher item in Model.Teachers)
+            {
+                <div class="col-md-3 col-sm-4 col-xs-12">
+                    <div class="single-teacher mb-45">
+                        <div class="single-teacher-img">
+                            <a asp-controller="teacher" asp-action="details" asp-route-id="@item.Id"><img src="~/site/img/teacher/@item.Image" alt="teacher"></a>
+                        </div>
+                        <div class="single-teacher-content text-center">
+                            <h2><a asp-controller="teacher" asp-action="details" asp-route-id="@item.Id">@item.Name @item.Surname</a></h2>
+                            <h4>@item.Position</h4>
+                            <ul>
+                                @if (item.Facebook != null)
+                                {
+                                    <li><a target="_blank" href="@item.Facebook"><i class="zmdi zmdi-facebook"></i></a></li>
+                                }
+                                @if (item.Pinterest != null)
+                                {
+                                    <li><a target="_blank" href="@item.Pinterest"><i class="zmdi zmdi-pinterest"></i></a></li>
+                                }
+                                @if (item.Twitter != null)
+                                {
+                                    <li><a target="_blank" href="@item.Twitter"><i class="zmdi zmdi-twitter"></i></a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- Teacher End -->
+<!-- Testimonial Area Start -->
+<div class="testimonial-area pt-110 pb-105 text-center">
+    <div class="container">
+        <div class="row">
+            <div class="testimonial-owl owl-theme owl-carousel">
+                @foreach (TestimonialSection item in Model.TestimonialSections)
+                {
+                    <div class="col-md-8 col-md-offset-2 col-sm-12">
+
+
+                        <div class="single-testimonial">
+                            <div class="testimonial-info">
+                                <div class="testimonial-img">
+                                    <img src="~/site/img/testimonial/@item.Image" alt="testimonial">
+                                </div>
+                                <div class="testimonial-content">
+                                    <p>@item.ShortDescription</p>
+                                    <h4>@item.Name @item.Surname </h4>
+                                    <h5>@item.Position</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Testimonial Area End -->
+<!-- Notice Start -->
+<section class="notice-area two pt-140">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="notice-right-wrapper mb-25 pb-25">
+                    <h3>TAKE A VIDEO TOUR</h3>
+                    <div class="notice-video">
+                        <div class="video-icon video-hover">
+                            <a class="video-popup" href="@Model.NoticeSections.VideoUrl">
+                                <i class="zmdi zmdi-play"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="notice-left-wrapper">
+                    <h3>notice board</h3>
+                    <div class="notice-left">
+                        @foreach (Notice item in @Model.NoticeSections.Notices)
+                        {
+                            <div class="single-notice-left mb-23 pb-20">
+                                <h4>@item.NoticeTime.ToString("dd, MMMM yyyy")</h4>
+                                <p>@item.NoticeText</p>
+                            </div>
+
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Notice End -->
+<!-- Subscribe Start -->
+@await Component.InvokeAsync("Subscribe");
+<!-- Subscribe End -->

@@ -27,5 +27,10 @@ namespace BackProject.Controllers
             if (teacher == null) return NotFound();
             return View(teacher);
         }
+        public IActionResult Search(string val)
+        {
+            List<Teacher> teachers = _context.Teachers.Where(t => !t.IsDeleted && t.Activeted && (t.Name.Contains(val) || t.Surname.Contains(val))).OrderByDescending(t => t.Id).Take(10).ToList();
+            return PartialView("_SearchPartialTeacher", teachers);
+        }
     }
 }

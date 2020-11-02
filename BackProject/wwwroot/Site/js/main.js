@@ -116,15 +116,72 @@
 /*------------------------------------
 	Nicescroll
 --------------------------------------*/
-     $('body').scrollspy({ 
-            target: '.navbar-collapse',
-            offset: 95
-        });
-$(".notice-left").niceScroll({
-            cursorcolor: "#EC1C23",
-            cursorborder: "0px solid #fff",
-            autohidemode: false,
-            
-        });
+    $('body').scrollspy({ 
+        target: '.navbar-collapse',
+        offset: 95
+    });
+    $(".notice-left").niceScroll({
+        cursorcolor: "#EC1C23",
+        cursorborder: "0px solid #fff",
+        autohidemode: false,
+    });
 
+    $("#searchbtn").on("click", function () {
+        let search = $(this).prev().val().trim()
+        if (search.length != 0) {
+            let shortUrl = window.location.href;
+            let url = window.location.href.lastIndexOf("?")
+            if (url > -1) {
+                shortUrl = shortUrl.substring(0, url);
+            }
+            console.log(url, shortUrl)
+            $.ajax({
+                url: shortUrl+"/Search?val=" + search,
+                Type: 'Get',
+                success: function (r) {
+                    $(".searchSct").html(r)
+                }
+            })
+        }
+
+    })
+    $(".reply-btn").on("click", function () {
+        let fullname = $("#name").val()
+        let subject = $("#subject").val()
+        let email = $("#email").val()
+        let message = $("#message").val()
+            $.ajax({
+                url: "/home/SendMsg",
+                data: {
+                    fullname: fullname,
+                    subject: subject,
+                    email: email,
+                    message: message
+                },
+                Type: 'Get',
+                success: function (r) {
+                    alert(r)
+                }
+            })
+    })
+    $("#mc-embedded-subscribe").on("click", function () {
+        let email = $("#mce-EMAIL").val()
+        $.ajax({
+            url: "/home/subscribe",
+            data: {
+                email: email,
+            },
+            Type: 'Get',
+            success: function (r) {
+                alert(r)
+            }
+        })
+    })
+    
+    var regExp = /^([\w\.\+]{1,})([^\W])(@)([\w]{1,})(\.[\w]{1,})+$/;
+
+    $('[type="email"]').on('keyup', function () {
+        $('.messageEmail').hide();
+        regExp.test($(this).val()) ? $('.messageEmail.success').show() : $('.messageEmail.error').show();
+    });
 })(jQuery);	

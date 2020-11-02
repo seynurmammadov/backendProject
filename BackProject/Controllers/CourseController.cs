@@ -18,10 +18,24 @@ namespace BackProject.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+        public IActionResult Index(int? id)
         {
-            List<Course> courses = _context.Courses.Where(c => !c.IsDeleted && c.Activeted).OrderByDescending(c => c.Created_at).Take(9).ToList();
-            return View(courses);
+            if (id == null)
+            {
+                List<Course> courses = _context.Courses.Where(c => !c.IsDeleted && c.Activeted).OrderByDescending(c => c.Created_at).Take(9).ToList();
+                return View(courses);
+            }
+            else
+            {
+                List<CourseCategory> courseCategories = _context.CourseCategories.Where(c => c.Activeted && !c.IsDeleted && c.CategoryId== id).Include(c => c.Course).ToList();
+                List<Course> courses = new List<Course>();
+                foreach (CourseCategory item in courseCategories)
+                {
+                    courses.Add(item.Course);
+                }
+                return View(courses);
+            }
+
         }
         public async Task<IActionResult> Details(int? id)
         {
@@ -44,6 +58,11 @@ namespace BackProject.Controllers
                 Tags = tags
             };
             return View(courseVM);
+        }
+        public IActionResult Search(string val)
+        {
+            List<Course> model = _context.Courses.Where(c => !c.IsDeleted && c.Activeted && c.Name.Contains(val)).OrderByDescending(c => c.Created_at).Take(10).ToList();
+            return PartialView("_SearchPartialCourse", model);
         }
     }
 }

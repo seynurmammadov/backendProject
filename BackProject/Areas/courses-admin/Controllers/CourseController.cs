@@ -175,7 +175,6 @@ namespace BackProject.Areas.courses_admin.Controllers
             courseDb.Name = course.Name;
             courseDb.ShortDescription = course.ShortDescription;
             courseDb.Description = course.Description;
-            courseDb.Activeted = course.Activeted;
             courseDb.CourseCategories = courseCategories;
             courseDb.CourseModerators = courseModerators;
             await _context.SaveChangesAsync();

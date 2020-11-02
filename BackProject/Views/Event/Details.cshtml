@@ -1,6 +1,7 @@
 ﻿@model EventVM
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Eduhome - Event Details";
+
     List<string> autors = new List<string>();
 }
 
@@ -15,9 +16,9 @@
             <div class="col-md-8">
                 <div class="event-details">
                     <div class="event-details-img">
-                        <img src="~/site/img/event/@Model.Event.Image" alt="event-details">
+                        <img src="~/site/img/event/@Model.Event.Image" width="700" alt="event-details">
                         <div class="event-date">
-                            <h3>@Model.Event.StartTime.ToString("dd") <span>@Model.Event.StartTime.ToString("MMMM")</span></h3>
+                            <h3>@Model.Event.StartTime.ToString("dd") <span>@Model.Event.StartTime.ToString("MMMM").Substring(0, 3)</span></h3>
                         </div>
                     </div>
                     <div class="event-details-content">
@@ -26,9 +27,9 @@
                             <li><span>time : </span> @Model.Event.StartTime.ToString("h.mm tt") - @Model.Event.EndTime.ToString("h.mm tt")</li>
                             <li><span>venue : </span>@Model.Event.Venue</li>
                         </ul>
-                        @Html.Raw(Model.Event.Description);
+                        @Html.Raw(Model.Event.Description)
                     </div>
-                    @await Component.InvokeAsync("LeaveReply");
+                    @await Component.InvokeAsync("LeaveReply")
                 </div>
             </div>
             <div class="col-md-4">
@@ -36,8 +37,8 @@
                     <div class="single-blog-widget mb-50">
                         <h3>search</h3>
                         <div class="blog-search">
-                            <form id="search" action="#">
-                                <input type="search" placeholder="Search..." name="search" />
+                            <form id="search" action="../../search">
+                                <input type="search" placeholder="Search..." name="val" />
                                 <button type="submit">
                                     <span><i class="fa fa-search"></i></span>
                                 </button>
@@ -49,7 +50,7 @@
                         <ul>
                             @foreach (EventCategory item in Model.Event.EventCategories)
                             {
-                                <li><a href="#">@item.Category.Name (@item.Category.EventCategories.Count())</a></li>
+                            <li><a asp-controller="event" asp-action="index" asp-route-id="@item.CategoryId">@item.Category.Name (@item.Category.EventCategories.Where(c => c.CategoryId == item.CategoryId && c.Activeted && !c.IsDeleted).Count())</a></li>
                             }
                         </ul>
                     </div>

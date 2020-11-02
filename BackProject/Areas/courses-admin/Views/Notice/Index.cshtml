@@ -1,17 +1,12 @@
 ﻿@model NoticeSection
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Admin Panel - Notices List ";
+    ViewData["TitleNavbar"] = " Notices List ";
 }
 
 <div class="card">
     <div class="card-header header-elements-inline">
-        <h5 class="card-title">Category</h5>
-        <div class="header-elements">
-            <div class="list-icons">
-                <a class="list-icons-item" data-action="collapse"></a>
-                <a class="list-icons-item" data-action="reload"></a>
-            </div>
-        </div>
+        <h5 class="card-title">Notices List</h5>
     </div>
     <div class="card-body">
         <div asp-validation-summary="ModelOnly" class="text-danger text-capitalize"></div>
@@ -30,24 +25,25 @@
     <table class="table category-datatable">
         <thead>
             <tr>
+                <th>Notice Message</th>
+
                 <th>Notice Time</th>
-                <th>Status</th>
                 <th class="text-right">Actions</th>
             </tr>
         </thead>
         <tbody>
             @foreach (Notice item in Model.Notices)
             {
-                <tr>
-                    <td class="text-capitalize">@item.NoticeTime</td>
-                    <td class="text-capitalize">@item.NoticeText</td>
-                    <td class="text-right">
-                        <div class="list-icons">
-                            <a asp-action="update" asp-route-id="@item.Id" class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
-                            <a class="list-icons-item text-danger-600 delete" data-id="@item.Id"><i class="icon-trash"></i></a>
-                        </div>
-                    </td>
-                </tr>
+            <tr>
+                <td class="text-capitalize">@item.NoticeText</td>
+                <td class="text-capitalize">@item.NoticeTime</td>
+                <td class="text-right">
+                    <div class="list-icons">
+                        <a asp-action="update" asp-route-id="@item.Id" class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
+                        <a class="list-icons-item text-danger-600 delete" data-id="@item.Id"><i class="icon-trash"></i></a>
+                    </div>
+                </td>
+            </tr>
             }
         </tbody>
     </table>

@@ -44,7 +44,8 @@ namespace BackProject.Controllers
                 UserName = register.Username,
                 PhoneNumber = register.PhoneNumber,
                 Email = register.Email,
-                Activeted = true
+                Activeted = true,
+                Image= "placeholder.jpg"
             };
             IdentityResult identityResult = await _userManager.CreateAsync(user, register.Password);
 
@@ -59,7 +60,7 @@ namespace BackProject.Controllers
         }
         public async Task<IActionResult> Logout()
         {
-            if (User.Identity.IsAuthenticated) return RedirectToAction("index", "home");
+            if (!User.Identity.IsAuthenticated) return RedirectToAction("index", "home");
             await _signManager.SignOutAsync();
             return RedirectToAction("index", "home");
         }

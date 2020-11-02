@@ -1,0 +1,77 @@
+﻿@model List<EventModerator>
+@{
+    ViewData["Title"] = "Admin Panel - My Events List ";
+    ViewData["TitleNavbar"] = " My Events List ";
+}
+
+<div class="card">
+    <div class="card-header header-elements-inline">
+        <h5 class="card-title">My Events List</h5>
+
+    </div>
+    <table class="table category-datatable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Categories</th>
+                <th>Start time</th>
+                <th>End time</th>
+                <th>Create time</th>
+                <th>Status</th>
+                <th class="text-center">Change Status</th>
+                <th class="text-right">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (EventModerator item in Model)
+            {
+                <tr>
+                    <td class="text-capitalize">@item.Event.Title</td>
+
+                    <td class="text-capitalize">
+                        <ol class="pl-3  ">
+                            @foreach (EventCategory categoryName in @item.Event.EventCategories)
+                            {
+                                <li class="text-capitalize"> @categoryName.Category.Name</li>
+                            }
+                        </ol>
+                    </td>
+                    <td class="text-capitalize">@item.Event.StartTime.ToString("dd MMMM HH:mm ")</td>
+                    <td class="text-capitalize">@item.Event.EndTime.ToString("dd MMMM HH:mm ")</td>
+                    <td class="text-capitalize">@item.Event.Created_at.ToString("MMMM dd, yyyy")</td>
+
+                    @if (item.Event.Activeted)
+                    {
+                        <td class=" text-capitalize text-success status-text">Active</td>
+                    }
+                    else
+                    {
+                        <td class="text-capitalize text-danger status-text">Disable</td>
+                    }
+                    <td class="text-center ">
+                        @if (!item.Event.Activeted)
+                        {
+                            <a class="text-capitalize text-white btn btn-success status " data-id="@item.Event.Id">Active</a>
+                        }
+                        else
+                        {
+                            <a class="text-capitalize text-white btn btn-danger status" data-id="@item.Event.Id">Disable</a>
+                        }
+                    </td>
+                    <td class="text-right">
+                        <div class="list-icons">
+
+                            <a asp-action="update" asp-route-id="@item.Event.Id" class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section ThemeScript{
+    <script src="~/Admin/global_assets/js/plugins/tables/datatables/datatables.min.js"></script>
+    <script src="~/Admin/global_assets/js/plugins/notifications/sweet_alert.min.js"></script>
+}
+

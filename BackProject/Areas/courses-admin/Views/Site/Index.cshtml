@@ -1,16 +1,11 @@
 ﻿@model SiteInfo
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Admin Panel - Site Settings ";
+    ViewData["TitleNavbar"] = " Site Settings ";
 }
 <div class="card">
     <div class="card-header header-elements-inline">
-        <h6 class="card-title">Site Info</h6>
-        <div class="header-elements">
-            <div class="list-icons">
-                <a class="list-icons-item" data-action="collapse"></a>
-                <a class="list-icons-item" data-action="reload"></a>
-            </div>
-        </div>
+        <h6 class="card-title">Site Settings</h6>
     </div>
     <div class="card-body">
         <div asp-validation-summary="ModelOnly" class="text-danger text-capitalize"></div>

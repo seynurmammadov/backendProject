@@ -52,6 +52,9 @@ namespace BackProject.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<string>("ActiveCode")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("Activeted")
                         .HasColumnType("bit");
 
@@ -472,6 +475,35 @@ namespace BackProject.Migrations
                     b.ToTable("NoticeSections");
                 });
 
+            modelBuilder.Entity("BackProject.Models.SendMessageFromUser", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Fullname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Subject")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SendMessageFromUsers");
+                });
+
             modelBuilder.Entity("BackProject.Models.SiteInfo", b =>
                 {
                     b.Property<int>("Id")
@@ -561,6 +593,28 @@ namespace BackProject.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Sliders");
+                });
+
+            modelBuilder.Entity("BackProject.Models.SubscribedUsers", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ActiveCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Actived")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SubscribedUsers");
                 });
 
             modelBuilder.Entity("BackProject.Models.Tag", b =>
